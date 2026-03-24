@@ -20,7 +20,7 @@ export default function App() {
         <section className="grid gap-12 pt-20 lg:grid-cols-[1fr_0.8fr]">
           <div>
             <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              Insurance coverage with <span className="text-blue-400">guidance you can trust.</span>
+              Insurance Coverage With <span className="text-blue-400">Guidance You Can Trust.</span>
             </h1>
             <p className="mt-6 text-lg text-slate-400">Helping families and businesses find dependable life, HMO, and non-life products.</p>
             <div className="mt-8 flex gap-4">
