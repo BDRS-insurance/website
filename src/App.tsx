@@ -12,43 +12,42 @@ export default function App() {
   const [activeFaq, setActiveFaq] = useState(null);
   const [activePartner, setActivePartner] = useState(null);
 
-  // Updated with your actual uploaded filenames and glow colors
   const partners = [
     { 
       name: "Pacific Cross", 
       img: "Pacific-Cross.png", 
       color: "shadow-blue-500/20 border-blue-500/50",
-      desc: "Specializing in medical, travel, and personal accident insurance with over 70 years of experience in Asia." 
+      desc: "Part of a wider specialist group operating across Asia for over 70 years, Pacific Cross Philippines emerged as a leader in medical and travel insurance, building a legacy on expert regional healthcare knowledge." 
     },
     { 
       name: "Paramount", 
       img: "Paramount.png", 
       color: "shadow-red-500/20 border-red-500/50",
-      desc: "A leading provider of life, health, and non-life insurance, known for accessible and reliable protection." 
+      desc: "Established in 1950, Paramount Life & General Insurance Corporation began as a specialized non-life insurer before evolving into a diversified powerhouse known for making insurance accessible to the Filipino masses." 
     },
     { 
       name: "PhilBritish", 
       img: "PhilBritish.png", 
       color: "shadow-orange-500/20 border-orange-500/50",
-      desc: "A trusted non-life specialist providing robust protection for property, marine, casualty, and engineering." 
+      desc: "Incorporated in the 1960s, The Philippine British Assurance Company, Inc. has spent over half a century maintaining a reputation for stability and reliability in the non-life sector, with strong roots in property and marine protection." 
     },
     { 
       name: "Asia United", 
       img: "asia-united.svg", 
       color: "shadow-indigo-500/20 border-indigo-500/50",
-      desc: "Full-service non-life insurer offering quality auto, fire, marine cargo, and professional liability products." 
+      desc: "Asia United Insurance, Inc. (AUII) is a 100% Filipino-owned non-life insurance company that earned its license in the mid-2000s, quickly establishing itself through the backing of major local financial institutions." 
     },
     { 
       name: "Bethel", 
-      img: "Bethel.png", 
+      img: "bethel.png", // FIXED: Changed to lowercase to match your GitHub upload
       color: "shadow-yellow-500/20 border-yellow-500/50",
-      desc: "Focused on providing affordable, flexible non-life insurance protection and specialized surety products." 
+      desc: "Bethel General Insurance and Surety Corporation carries a history of dedicated service, evolving from a niche provider into a comprehensive insurer focused on integrity and providing secure surety bonds for Filipino businesses." 
     },
     { 
       name: "Maagap", 
       img: "maagap.png", 
       color: "shadow-cyan-500/20 border-cyan-500/50",
-      desc: "Committed to world-class non-life insurance services and continuous product innovation." 
+      desc: "Maagap Insurance, Inc. was founded with the vision of being 'proactive' (Maagap). It has built its history on being one of the first to respond to modern risks with innovative non-life products and professional claim handling." 
     }
   ];
 
@@ -101,7 +100,7 @@ export default function App() {
     event.preventDefault();
     setLoading(true);
     const formData = new FormData(event.target);
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE"); // Update this with your Web3Forms key
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
 
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -182,7 +181,7 @@ export default function App() {
 
         <div className="text-center mb-16">
           <h3 className="text-sm font-black tracking-[0.5em] text-blue-400 uppercase mb-4">Authorized Provider For</h3>
-          <p className="text-slate-400 text-xs">Click a card to learn more about our partner providers.</p>
+          <p className="text-slate-400 text-xs italic">Click a partner card to see their history and expertise.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
@@ -209,8 +208,8 @@ export default function App() {
                 <h4 className={`text-xl font-black transition-colors ${activePartner === index ? 'text-white' : 'text-slate-300'}`}>
                   {p.name}
                 </h4>
-                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activePartner === index ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-sm text-slate-400 leading-relaxed py-2 border-t border-white/10">
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activePartner === index ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-[13px] text-slate-400 leading-relaxed py-2 border-t border-white/10">
                     {p.desc}
                   </p>
                 </div>
@@ -276,7 +275,7 @@ export default function App() {
         </p>
       </footer>
 
-      {/* MODALS */}
+      {/* PRODUCT MODAL */}
       {selectedProduct && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-6 py-10">
           <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setSelectedProduct(null)} />
@@ -298,6 +297,7 @@ export default function App() {
         </div>
       )}
 
+      {/* SUCCESS MODAL */}
       {showSuccess && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center px-6">
           <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm" onClick={() => setShowSuccess(false)} />
