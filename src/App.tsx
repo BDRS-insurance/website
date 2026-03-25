@@ -111,49 +111,52 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-blue-500/30 overflow-x-hidden">
       
-      {/* NAVIGATION - Improved for Mobile */}
+      {/* NAVIGATION */}
       <nav className="fixed top-0 w-full z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
-          <div className="flex flex-col">
-            <span className="text-lg font-black tracking-tight bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent uppercase">BDRS</span>
-            <span className="text-[7px] uppercase tracking-widest text-slate-400 font-bold hidden xs:block">Dependable Risk Solutions</span>
+          <div className="flex flex-col cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+            <span className="text-lg md:text-xl font-black tracking-tight bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent uppercase">BDRS</span>
+            <span className="text-[7px] md:text-[9px] uppercase tracking-widest text-slate-400 font-bold hidden xs:block">Dependable Risk Solutions</span>
           </div>
-          <a href="mailto:bdrsassociates@gmail.com" className="bg-blue-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-blue-500 transition active:scale-95">
+          <div className="hidden md:flex gap-8 text-sm font-bold">
+            <a href="#products" className="hover:text-blue-400 transition">Products</a>
+            <a href="#quote" className="hover:text-blue-400 transition">Get Quote</a>
+          </div>
+          <a href="mailto:bdrsassociates@gmail.com" className="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-xs font-black uppercase hover:bg-blue-500 transition active:scale-95">
             Contact Us
           </a>
         </div>
       </nav>
 
-      {/* HERO SECTION - Stacked for Mobile */}
-      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] -z-10" />
-        <div className="max-w-7xl mx-auto flex flex-col gap-12 text-center lg:text-left">
-          <div>
-            <h1 className="text-4xl md:text-7xl font-extrabold leading-tight mb-6">
+      {/* HERO SECTION */}
+      <section className="relative pt-32 md:pt-40 pb-16 px-6 overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 md:w-[500px] h-64 md:h-[500px] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px] -z-10" />
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-center text-center lg:text-left">
+          <div className="flex-1">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
               Insurance With <br className="hidden md:block" />
               <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Guidance You Can Trust.</span>
             </h1>
-            <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Protecting what matters most with expert advice and products tailored for Filipino families.
+            <p className="text-base md:text-lg text-slate-400 mb-8 md:mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Protecting what matters most with expert advice and products tailored for Filipino families and businesses.
             </p>
             <a href="#quote" className="inline-flex px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition shadow-lg shadow-blue-600/25 items-center gap-2 active:scale-95">
               Start Your Quote <ArrowRight className="w-5 h-5" />
             </a>
           </div>
 
-          {/* Form optimized for small screens */}
-          <div id="quote" className="bg-slate-900/40 border border-white/10 p-6 md:p-8 rounded-[2rem] backdrop-blur-2xl shadow-2xl">
-            <h3 className="text-xl font-bold mb-6 text-white text-left">Request a Quote</h3>
+          <div id="quote" className="w-full lg:w-[450px] bg-slate-900/40 border border-white/10 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] backdrop-blur-2xl shadow-2xl shrink-0">
+            <h3 className="text-xl md:text-2xl font-bold mb-6 text-white text-left">Request a Quote</h3>
             <form onSubmit={onSubmit} className="space-y-4">
-              <input name="name" type="text" placeholder="Full Name" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-white" />
-              <input name="email" type="email" placeholder="Email Address" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-white" />
-              <input name="phone" type="text" placeholder="Phone Number" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-white" />
-              <select name="service" className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-slate-400">
+              <input name="name" type="text" placeholder="Full Name" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 md:py-3.5 text-sm md:text-base focus:border-blue-500 outline-none text-white transition" />
+              <input name="email" type="email" placeholder="Email Address" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 md:py-3.5 text-sm md:text-base focus:border-blue-500 outline-none text-white transition" />
+              <input name="phone" type="text" placeholder="Phone Number" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 md:py-3.5 text-sm md:text-base focus:border-blue-500 outline-none text-white transition" />
+              <select name="service" className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 md:py-3.5 text-sm md:text-base focus:border-blue-500 outline-none text-slate-300 transition appearance-none">
                 <option>Life Insurance</option>
                 <option>HMO / Health Coverage</option>
                 <option>Non-Life Insurance</option>
               </select>
-              <button disabled={loading} type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 rounded-xl transition-all active:scale-[0.98]">
+              <button disabled={loading} type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 rounded-xl transition-all active:scale-[0.98] mt-2">
                 {loading ? "Sending..." : "Submit Inquiry"}
               </button>
             </form>
@@ -161,31 +164,41 @@ export default function App() {
         </div>
       </section>
 
-      {/* PARTNERS SECTION - Single column on mobile */}
-      <section className="max-w-7xl mx-auto px-6 py-16 relative">
-        <div className="text-center mb-10">
-          {/* UPDATED HEADING HERE */}
-          <h3 className="text-[10px] font-black tracking-[0.3em] text-blue-400 uppercase mb-3">Accredited Partners</h3>
-          <p className="text-slate-500 text-[10px] italic">Tap a card to reveal company history</p>
+      {/* PARTNERS SECTION - Made much larger with original colors */}
+      <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 relative">
+        <div className="text-center mb-12 md:mb-16">
+          {/* Increased heading size from text-[10px] to text-lg/2xl */}
+          <h3 className="text-lg md:text-2xl font-black tracking-[0.2em] text-blue-400 uppercase mb-3 md:mb-4">
+            Accredited Partners
+          </h3>
+          <p className="text-slate-400 text-sm italic">Tap a card to reveal company history</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {partners.map((p, index) => (
             <div 
               key={p.name}
               onClick={() => setActivePartner(activePartner === index ? null : index)}
-              className={`p-6 rounded-[2rem] border transition-all duration-300 active:scale-[0.98] cursor-pointer
+              className={`group p-8 md:p-10 rounded-[2rem] border transition-all duration-300 active:scale-[0.98] cursor-pointer
                 ${activePartner === index 
-                  ? `${p.color} bg-slate-900/90 border-blue-500/50` 
-                  : 'border-white/5 bg-white/[0.03] hover:bg-white/[0.05]'}`}
+                  ? `${p.color} bg-slate-900 border-blue-500/50 shadow-2xl scale-[1.02]` 
+                  : 'border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/20'}`}
             >
-              <div className="h-12 flex items-center justify-start mb-4">
-                <img src={`./${p.img}`} alt={p.name} className="h-full w-auto object-contain" />
+              {/* Removed ALL brightness filters so logos retain full original color. Increased height to h-20/24 */}
+              <div className="h-20 sm:h-24 flex items-center justify-start mb-6">
+                <img 
+                  src={`./${p.img}`} 
+                  alt={p.name} 
+                  className={`h-full w-auto object-contain transition-transform duration-500 
+                    ${activePartner === index ? 'scale-110' : 'group-hover:scale-105'}`}
+                  onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/150?text=' + p.name }}
+                />
               </div>
               <div className="text-left">
-                <h4 className="font-bold text-lg text-slate-200">{p.name}</h4>
-                <div className={`overflow-hidden transition-all duration-500 ${activePartner === index ? 'max-h-60 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-xs text-slate-400 leading-relaxed pt-3 border-t border-white/10">{p.desc}</p>
+                {/* Increased title size */}
+                <h4 className="font-bold text-xl md:text-2xl text-slate-100">{p.name}</h4>
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activePartner === index ? 'max-h-80 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-sm md:text-base text-slate-300 leading-relaxed pt-4 border-t border-white/10">{p.desc}</p>
                 </div>
               </div>
             </div>
@@ -193,29 +206,31 @@ export default function App() {
         </div>
       </section>
 
-      {/* WHY CHOOSE BDRS - Clean Mobile Grid */}
-      <section className="px-6 py-16 bg-white/[0.02] border-y border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+      {/* WHY CHOOSE BDRS */}
+      <section className="px-6 py-16 md:py-24 bg-white/[0.01] border-y border-white/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           {reasons.map((r, i) => (
-            <div key={i} className="flex flex-col items-center text-center">
-              <div className="mb-4 text-blue-400">{r.icon}</div>
-              <h4 className="font-bold mb-2">{r.title}</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">{r.desc}</p>
+            <div key={i} className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500/10 transition-colors text-blue-400">
+                {r.icon}
+              </div>
+              <h4 className="text-xl font-bold mb-3">{r.title}</h4>
+              <p className="text-sm md:text-base text-slate-400 leading-relaxed">{r.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* PRODUCTS - Responsive Cards */}
-      <section className="px-6 py-20 text-center max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12">Our Protection Plans</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* PRODUCTS SECTION */}
+      <section id="products" className="px-6 py-20 md:py-24 text-center max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 md:mb-16">Our Protection Plans</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {products.map((product) => (
-            <div key={product.id} onClick={() => setSelectedProduct(product)} className="bg-slate-900/30 border border-white/5 p-8 rounded-[2rem] text-left active:bg-slate-800 transition cursor-pointer hover:bg-slate-800/50 hover:border-blue-500/30">
-              <div className="mb-4">{product.icon}</div>
-              <h4 className="text-xl font-bold mb-2">{product.title}</h4>
-              <p className="text-xs text-slate-400 mb-6">{product.shortDesc}</p>
-              <div className="flex items-center gap-2 text-blue-400 text-[9px] font-black uppercase tracking-widest">
+            <div key={product.id} onClick={() => setSelectedProduct(product)} className="bg-slate-900/30 border border-white/5 p-8 md:p-10 rounded-[2rem] text-left transition cursor-pointer hover:bg-slate-800/50 hover:border-blue-500/30 group">
+              <div className="mb-6 group-hover:scale-110 transition-transform origin-left">{product.icon}</div>
+              <h4 className="text-xl md:text-2xl font-bold mb-3">{product.title}</h4>
+              <p className="text-sm text-slate-400 mb-8 leading-relaxed">{product.shortDesc}</p>
+              <div className="flex items-center gap-2 text-blue-400 text-[10px] font-black uppercase tracking-widest">
                 View Details <ChevronRight className="w-4 h-4" />
               </div>
             </div>
@@ -224,27 +239,28 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-10 text-center border-t border-white/5 opacity-50">
-        <p className="text-[8px] uppercase tracking-[0.3em]">© {new Date().getFullYear()} BDRS Associates Insurance Agency</p>
+      <footer className="py-12 text-center border-t border-white/5">
+        <p className="text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold">© {new Date().getFullYear()} BDRS Associates Insurance Agency</p>
       </footer>
 
       {/* MOBILE FRIENDLY MODAL */}
       {selectedProduct && (
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedProduct(null)} />
-          <div className="relative bg-slate-900 border border-white/10 w-full max-w-lg rounded-t-[2rem] sm:rounded-[2rem] p-8 animate-in slide-in-from-bottom sm:zoom-in">
-            <button onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition"><X className="w-5 h-5" /></button>
-            <h3 className="text-2xl font-bold mb-2">{selectedProduct.title}</h3>
-            <p className="text-xs text-slate-400 mb-6">{selectedProduct.longDesc}</p>
-            <div className="grid grid-cols-2 gap-3 mb-8">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setSelectedProduct(null)} />
+          <div className="relative bg-slate-900 border border-white/10 w-full max-w-lg rounded-t-[2.5rem] sm:rounded-[2.5rem] p-8 md:p-10 animate-in slide-in-from-bottom sm:zoom-in shadow-2xl">
+            <button onClick={() => setSelectedProduct(null)} className="absolute top-6 right-6 p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition"><X className="w-5 h-5" /></button>
+            <div className="mb-6">{selectedProduct.icon}</div>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">{selectedProduct.title}</h3>
+            <p className="text-sm md:text-base text-slate-400 mb-8 leading-relaxed">{selectedProduct.longDesc}</p>
+            <div className="grid grid-cols-2 gap-4 mb-8">
               {selectedProduct.benefits.map((b, i) => (
-                <div key={i} className="bg-white/5 p-3 rounded-lg flex items-center gap-2">
-                  <CheckCircle2 className="w-3 h-3 text-emerald-500" />
-                  <span className="text-[10px] font-bold uppercase">{b}</span>
+                <div key={i} className="bg-white/5 border border-white/5 p-3 rounded-xl flex items-center gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-wide">{b}</span>
                 </div>
               ))}
             </div>
-            <button onClick={() => { setSelectedProduct(null); window.location.href="#quote"; }} className="w-full py-4 bg-blue-600 rounded-xl font-bold active:bg-blue-500 hover:bg-blue-500 transition">Inquire Now</button>
+            <button onClick={() => { setSelectedProduct(null); window.location.href="#quote"; }} className="w-full py-4 bg-blue-600 rounded-xl font-bold active:scale-[0.98] hover:bg-blue-500 transition">Inquire Now</button>
           </div>
         </div>
       )}
