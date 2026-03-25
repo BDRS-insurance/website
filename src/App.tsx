@@ -34,7 +34,7 @@ export default function App() {
       name: "Asia Insurance", 
       img: "asia-insurance.png", 
       color: "shadow-indigo-500/20 border-indigo-500/50",
-      desc: "Asia Insurance (Philippines) Corporation is a strategic joint venture between the Asia Insurance Company of Hong Kong and local partners. It brings a global standard of risk management to the Philippine market, specializing in personalized non-life solutions." 
+      desc: "Asia Insurance (Philippines) Corporation is a strategic joint venture between the Asia Insurance Company of Hong Kong and local partners. It brings a global standard of risk management to the Philippine market." 
     },
     { 
       name: "Bethel", 
@@ -53,17 +53,17 @@ export default function App() {
   const reasons = [
     {
       title: "Decades of Expertise",
-      desc: "Deep experience in the Philippine insurance landscape to give you the best advice.",
+      desc: "Deep experience in the Philippine insurance landscape.",
       icon: <Award className="w-8 h-8 text-blue-400" />
     },
     {
       title: "Fast Claims Support",
-      desc: "We stand by you during the most critical times to ensure smooth claim processing.",
+      desc: "We stand by you during the most critical times.",
       icon: <Clock className="w-8 h-8 text-emerald-400" />
     },
     {
       title: "Tailored Solutions",
-      desc: "We compare multiple providers to find the specific plan that fits your budget.",
+      desc: "We find the specific plan that fits your budget.",
       icon: <Zap className="w-8 h-8 text-cyan-400" />
     }
   ];
@@ -73,25 +73,25 @@ export default function App() {
       id: 'life',
       title: 'Life Insurance',
       icon: <ShieldCheck className="w-10 h-10 text-blue-400" />,
-      shortDesc: 'Protect your family’s future and build lasting peace of mind.',
-      longDesc: 'Life insurance is a promise to your loved ones. Our plans cover educational funds, mortgage protection, and estate planning.',
-      benefits: ['Death Benefit Protection', 'Critical Illness Riders', 'Educational Funding', 'Retirement Planning']
+      shortDesc: 'Protect your family’s future and peace of mind.',
+      longDesc: 'Life insurance is a promise to your loved ones. Our plans cover educational funds and estate planning.',
+      benefits: ['Death Benefit', 'Critical Illness', 'Education Fund', 'Retirement']
     },
     {
       id: 'hmo',
-      title: 'HMO / Health Coverage',
+      title: 'HMO / Health',
       icon: <HeartPulse className="w-10 h-10 text-emerald-400" />,
-      shortDesc: 'Comprehensive medical protection for you and your employees.',
-      longDesc: 'Health is your greatest asset. We partner with top providers to give you access to the best hospitals and doctors.',
-      benefits: ['In-patient & Out-patient Care', 'Emergency Services', 'Dental Coverage', 'Annual Physical Exams']
+      shortDesc: 'Comprehensive medical protection for everyone.',
+      longDesc: 'We partner with top providers to give you access to the best hospitals and doctors.',
+      benefits: ['In-patient Care', 'Emergency', 'Dental', 'Physical Exams']
     },
     {
       id: 'non-life',
-      title: 'Non-Life Insurance',
+      title: 'Non-Life',
       icon: <Car className="w-10 h-10 text-cyan-400" />,
-      shortDesc: 'Protect your vehicles, property, and business assets.',
+      shortDesc: 'Protect your vehicles, property, and assets.',
       longDesc: 'Our non-life products provide robust coverage for your cars, homes, and business operations.',
-      benefits: ['Comprehensive Car Insurance', 'Fire & Allied Perils', 'Marine Insurance', 'Surety Bonds']
+      benefits: ['Car Insurance', 'Fire Insurance', 'Marine Cargo', 'Surety Bonds']
     }
   ];
 
@@ -100,72 +100,60 @@ export default function App() {
     setLoading(true);
     const formData = new FormData(event.target);
     formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
-
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData
     }).then((res) => res.json());
-
     setLoading(false);
-    if (res.success) {
-      setShowSuccess(true);
-      event.target.reset();
-    }
+    if (res.success) { setShowSuccess(true); event.target.reset(); }
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-blue-500/30 overflow-x-hidden">
       
-      {/* NAVIGATION */}
-      <nav className="fixed top-0 w-full z-40 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-3 shadow-2xl">
-          <div>
-            <div className="text-xl font-black tracking-tight bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-              BDRS ASSOCIATES
-            </div>
-            <p className="text-[9px] uppercase tracking-[0.2em] text-slate-400 font-bold">Building Dependable Risks Solutions</p>
+      {/* NAVIGATION - Improved for Mobile */}
+      <nav className="fixed top-0 w-full z-50 px-4 py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
+          <div className="flex flex-col">
+            <span className="text-lg font-black tracking-tight bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent uppercase">BDRS</span>
+            <span className="text-[7px] uppercase tracking-widest text-slate-400 font-bold hidden xs:block">Dependable Risk Solutions</span>
           </div>
-          <div className="hidden md:flex gap-8 text-sm font-bold">
-            <a href="#about" className="hover:text-blue-400 transition">About</a>
-            <a href="#products" className="hover:text-blue-400 transition">Products</a>
-            <a href="#quote" className="hover:text-blue-400 transition">Get Quote</a>
-          </div>
-          <a href="mailto:bdrsassociates@gmail.com" className="bg-white text-slate-900 px-5 py-2 rounded-full text-xs font-black uppercase hover:bg-blue-400 transition">
-            Contact
+          <a href="mailto:bdrsassociates@gmail.com" className="bg-blue-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-blue-500 transition active:scale-95">
+            Contact Us
           </a>
         </div>
       </nav>
 
-      {/* HERO SECTION */}
-      <section className="relative pt-40 pb-20 px-6 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -z-10" />
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <div className="text-left">
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6">
-              Insurance With <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Guidance You Can Trust.</span>
+      {/* HERO SECTION - Stacked for Mobile */}
+      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] -z-10" />
+        <div className="max-w-7xl mx-auto flex flex-col gap-12 text-center lg:text-left">
+          <div>
+            <h1 className="text-4xl md:text-7xl font-extrabold leading-tight mb-6">
+              Insurance With <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Guidance You Can Trust.</span>
             </h1>
-            <p className="text-lg text-slate-400 mb-10 leading-relaxed max-w-xl">
-              Protecting what matters most with expert advice and dependable products tailored for Filipino families and businesses.
+            <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Protecting what matters most with expert advice and products tailored for Filipino families.
             </p>
-            <a href="#quote" className="inline-flex px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition shadow-lg shadow-blue-600/25 items-center gap-2">
+            <a href="#quote" className="inline-flex px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition shadow-lg shadow-blue-600/25 items-center gap-2 active:scale-95">
               Start Your Quote <ArrowRight className="w-5 h-5" />
             </a>
           </div>
 
-          <div id="quote" className="bg-slate-900/40 border border-white/10 p-8 rounded-[2.5rem] backdrop-blur-2xl shadow-2xl">
-            <h3 className="text-2xl font-bold mb-6 text-white text-left">Request a Quote</h3>
+          {/* Form optimized for small screens */}
+          <div id="quote" className="bg-slate-900/40 border border-white/10 p-6 md:p-8 rounded-[2rem] backdrop-blur-2xl shadow-2xl">
+            <h3 className="text-xl font-bold mb-6 text-white text-left">Request a Quote</h3>
             <form onSubmit={onSubmit} className="space-y-4">
-              <input name="name" type="text" placeholder="Full Name" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3.5 focus:border-blue-500 outline-none transition text-white" />
-              <div className="grid md:grid-cols-2 gap-4">
-                <input name="email" type="email" placeholder="Email Address" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3.5 focus:border-blue-500 outline-none transition text-white" />
-                <input name="phone" type="text" placeholder="Phone Number" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3.5 focus:border-blue-500 outline-none transition text-white" />
-              </div>
-              <select name="service" className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3.5 focus:border-blue-500 outline-none transition text-slate-400">
+              <input name="name" type="text" placeholder="Full Name" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-white" />
+              <input name="email" type="email" placeholder="Email Address" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-white" />
+              <input name="phone" type="text" placeholder="Phone Number" required className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-white" />
+              <select name="service" className="w-full bg-slate-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none text-slate-400">
                 <option>Life Insurance</option>
                 <option>HMO / Health Coverage</option>
                 <option>Non-Life Insurance</option>
               </select>
-              <button disabled={loading} type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-700 text-slate-950 font-black py-4 rounded-xl transition-all">
+              <button disabled={loading} type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 rounded-xl transition-all active:scale-[0.98]">
                 {loading ? "Sending..." : "Submit Inquiry"}
               </button>
             </form>
@@ -173,44 +161,31 @@ export default function App() {
         </div>
       </section>
 
-      {/* INTERACTIVE PARTNERS SECTION */}
-      <section className="max-w-7xl mx-auto px-6 py-24 relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-emerald-600/10 rounded-full blur-[100px] animate-pulse delay-700" />
-
-        <div className="text-center mb-16">
-          <h3 className="text-sm font-black tracking-[0.5em] text-blue-400 uppercase mb-4">Authorized Provider For</h3>
-          <p className="text-slate-400 text-xs italic">Click a partner card to see their history and expertise.</p>
+      {/* PARTNERS SECTION - Single column on mobile */}
+      <section className="max-w-7xl mx-auto px-6 py-16 relative">
+        <div className="text-center mb-10">
+          {/* UPDATED HEADING HERE */}
+          <h3 className="text-[10px] font-black tracking-[0.3em] text-blue-400 uppercase mb-3">Accredited Partners</h3>
+          <p className="text-slate-500 text-[10px] italic">Tap a card to reveal company history</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {partners.map((p, index) => (
             <div 
               key={p.name}
               onClick={() => setActivePartner(activePartner === index ? null : index)}
-              className={`group cursor-pointer relative p-8 rounded-[2.5rem] border transition-all duration-500 
+              className={`p-6 rounded-[2rem] border transition-all duration-300 active:scale-[0.98] cursor-pointer
                 ${activePartner === index 
-                  ? `${p.color} bg-slate-900/80 scale-[1.02] shadow-2xl` 
-                  : 'border-white/5 bg-white/[0.02] hover:border-white/20'}`}
+                  ? `${p.color} bg-slate-900/90 border-blue-500/50` 
+                  : 'border-white/5 bg-white/[0.03] hover:bg-white/[0.05]'}`}
             >
-              <div className="h-16 flex items-center justify-start mb-6">
-                <img 
-                  src={`./${p.img}`} 
-                  alt={p.name} 
-                  className={`h-full w-auto object-contain transition-all duration-500 
-                    ${activePartner === index ? 'scale-110 brightness-110' : 'brightness-90 group-hover:brightness-110'}`}
-                  onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/150?text=' + p.name }}
-                />
+              <div className="h-12 flex items-center justify-start mb-4">
+                <img src={`./${p.img}`} alt={p.name} className="h-full w-auto object-contain" />
               </div>
-
-              <div className="space-y-2 text-left">
-                <h4 className={`text-xl font-black transition-colors ${activePartner === index ? 'text-white' : 'text-slate-300'}`}>
-                  {p.name}
-                </h4>
-                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activePartner === index ? 'max-h-[400px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-[13px] text-slate-400 leading-relaxed py-2 border-t border-white/10">
-                    {p.desc}
-                  </p>
+              <div className="text-left">
+                <h4 className="font-bold text-lg text-slate-200">{p.name}</h4>
+                <div className={`overflow-hidden transition-all duration-500 ${activePartner === index ? 'max-h-60 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-xs text-slate-400 leading-relaxed pt-3 border-t border-white/10">{p.desc}</p>
                 </div>
               </div>
             </div>
@@ -218,36 +193,30 @@ export default function App() {
         </div>
       </section>
 
-      {/* WHY CHOOSE BDRS */}
-      <section className="max-w-7xl mx-auto px-6 py-24 border-y border-white/5 bg-white/[0.01]">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Why Choose BDRS?</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-sm">Dependability is at the core of everything we do.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-12 text-center">
+      {/* WHY CHOOSE BDRS - Clean Mobile Grid */}
+      <section className="px-6 py-16 bg-white/[0.02] border-y border-white/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
           {reasons.map((r, i) => (
-            <div key={i} className="group">
-              <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-500/10 group-hover:border-blue-500/30 transition-all duration-500 text-blue-400">
-                {r.icon}
-              </div>
-              <h4 className="text-xl font-bold mb-3">{r.title}</h4>
-              <p className="text-slate-400 text-sm leading-relaxed">{r.desc}</p>
+            <div key={i} className="flex flex-col items-center text-center">
+              <div className="mb-4 text-blue-400">{r.icon}</div>
+              <h4 className="font-bold mb-2">{r.title}</h4>
+              <p className="text-xs text-slate-500 leading-relaxed">{r.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* PRODUCTS SECTION */}
-      <section id="products" className="max-w-7xl mx-auto px-6 py-24 text-center">
-        <h2 className="text-4xl font-bold mb-16">Our Protection Plans</h2>
-        <div className="grid md:grid-cols-3 gap-8 text-left">
+      {/* PRODUCTS - Responsive Cards */}
+      <section className="px-6 py-20 text-center max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12">Our Protection Plans</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((product) => (
-            <div key={product.id} onClick={() => setSelectedProduct(product)} className="group cursor-pointer bg-slate-900/20 border border-white/5 p-8 rounded-[2rem] hover:bg-slate-800/40 hover:border-blue-500/30 transition-all duration-500">
-              <div className="mb-6 group-hover:scale-110 transition-transform">{product.icon}</div>
-              <h4 className="text-2xl font-bold mb-3">{product.title}</h4>
-              <p className="text-slate-400 text-sm mb-6 leading-relaxed">{product.shortDesc}</p>
-              <div className="flex items-center gap-2 text-blue-400 text-[10px] font-black uppercase tracking-widest">
-                Explore Plan <ChevronRight className="w-4 h-4" />
+            <div key={product.id} onClick={() => setSelectedProduct(product)} className="bg-slate-900/30 border border-white/5 p-8 rounded-[2rem] text-left active:bg-slate-800 transition cursor-pointer hover:bg-slate-800/50 hover:border-blue-500/30">
+              <div className="mb-4">{product.icon}</div>
+              <h4 className="text-xl font-bold mb-2">{product.title}</h4>
+              <p className="text-xs text-slate-400 mb-6">{product.shortDesc}</p>
+              <div className="flex items-center gap-2 text-blue-400 text-[9px] font-black uppercase tracking-widest">
+                View Details <ChevronRight className="w-4 h-4" />
               </div>
             </div>
           ))}
@@ -255,43 +224,27 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/5 py-12 px-6 text-center">
-        <p className="text-slate-600 text-[10px] font-black tracking-[0.4em] uppercase">
-          © {new Date().getFullYear()} BDRS Associates Insurance Agency
-        </p>
+      <footer className="py-10 text-center border-t border-white/5 opacity-50">
+        <p className="text-[8px] uppercase tracking-[0.3em]">© {new Date().getFullYear()} BDRS Associates Insurance Agency</p>
       </footer>
 
-      {/* MODAL FOR PRODUCTS */}
+      {/* MOBILE FRIENDLY MODAL */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6 py-10">
-          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setSelectedProduct(null)} />
-          <div className="relative bg-slate-900 border border-white/10 w-full max-w-2xl rounded-[2.5rem] p-8 md:p-12 animate-in zoom-in">
-            <button onClick={() => setSelectedProduct(null)} className="absolute top-6 right-6 p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition"><X className="w-5 h-5" /></button>
-            <div className="mb-6">{selectedProduct.icon}</div>
-            <h3 className="text-3xl font-bold mb-4">{selectedProduct.title}</h3>
-            <p className="text-slate-400 mb-8 leading-relaxed">{selectedProduct.longDesc}</p>
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedProduct(null)} />
+          <div className="relative bg-slate-900 border border-white/10 w-full max-w-lg rounded-t-[2rem] sm:rounded-[2rem] p-8 animate-in slide-in-from-bottom sm:zoom-in">
+            <button onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition"><X className="w-5 h-5" /></button>
+            <h3 className="text-2xl font-bold mb-2">{selectedProduct.title}</h3>
+            <p className="text-xs text-slate-400 mb-6">{selectedProduct.longDesc}</p>
+            <div className="grid grid-cols-2 gap-3 mb-8">
               {selectedProduct.benefits.map((b, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-wide">{b}</span>
+                <div key={i} className="bg-white/5 p-3 rounded-lg flex items-center gap-2">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                  <span className="text-[10px] font-bold uppercase">{b}</span>
                 </div>
               ))}
             </div>
-            <button onClick={() => { setSelectedProduct(null); window.location.href="#quote"; }} className="w-full py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition">Inquire About This Plan</button>
-          </div>
-        </div>
-      )}
-
-      {/* SUCCESS MESSAGE */}
-      {showSuccess && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center px-6">
-          <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm" onClick={() => setShowSuccess(false)} />
-          <div className="relative bg-slate-900 border border-emerald-500/30 p-10 max-w-md w-full rounded-[2.5rem] text-center shadow-2xl animate-in zoom-in">
-            <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto mb-6" />
-            <h3 className="text-3xl font-bold mb-2">Message Sent!</h3>
-            <p className="text-slate-400 mb-8">Expect a message from a BDRS Associate shortly.</p>
-            <button onClick={() => setShowSuccess(false)} className="w-full py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition">Close</button>
+            <button onClick={() => { setSelectedProduct(null); window.location.href="#quote"; }} className="w-full py-4 bg-blue-600 rounded-xl font-bold active:bg-blue-500 hover:bg-blue-500 transition">Inquire Now</button>
           </div>
         </div>
       )}
